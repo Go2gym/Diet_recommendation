@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>회원가입</title>
+</head>
+
+<body>
+    <div class="register-wrapper">
+        <h2>회원가입</h2>
+        <form method="post" action="/register" id="register-form">
+            <div>
+                <label>이    름 : </label>
+                <input type="text" name="name" placeholder="Name">
+            </div>
+            <div>
+                <label>아 이 디 : </label>
+                <input type="text" name="username" placeholder="ID">
+            </div>
+            <div>
+                <label>비밀번호 : </label>
+                <input type="text" name="password" placeholder="Password">
+            </div>
+            <input type="submit" value="register">
+        </form>
+    </div>
+</body>
+
+</html>
