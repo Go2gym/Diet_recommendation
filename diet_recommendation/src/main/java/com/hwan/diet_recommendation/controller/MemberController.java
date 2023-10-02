@@ -23,8 +23,12 @@ public class MemberController {
 
     @PostMapping("/register")
     public String postRegister(MemberDTO memberDTO) {
-        memberServiceImpl.join(memberDTO);
-        return "/home";
+        if(memberServiceImpl.join(memberDTO)) {
+            return "/home";
+        }
+        else {
+            return "/member/register";
+        }
     }
 
     

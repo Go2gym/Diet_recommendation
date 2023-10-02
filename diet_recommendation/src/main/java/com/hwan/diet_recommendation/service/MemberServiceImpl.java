@@ -19,13 +19,15 @@ public class MemberServiceImpl implements MemberService{
 
     @Override
     @Transactional
-    public Member join(MemberDTO memberDTO) {
+    public boolean join(MemberDTO memberDTO) {
         Member member = memberDTO.toEntity(memberDTO);
+        //true:객체에 값이 있으므로 아이디 중복 O
         if (findMemberByUsername(member.getUsername()).isPresent()) {
-            throw new RuntimeException();
+            return false;
         }
 
-        return memberRepository.save(member);
+        memberRepository.save(member);
+        return true;
     }
     
     

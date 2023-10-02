@@ -6,7 +6,7 @@ import com.hwan.diet_recommendation.dto.MemberDTO;
 import com.hwan.diet_recommendation.entity.Member;
 
 public interface MemberService {
-    public Member join(MemberDTO memberDTO);
+    public boolean join(MemberDTO memberDTO);
 
     public Optional<Member> findMemberByUsername(String username);
 
