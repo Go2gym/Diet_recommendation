@@ -7,8 +7,9 @@ import com.hwan.diet_recommendation.entity.Member;
 
 public interface MemberService {
     public boolean join(MemberDTO memberDTO);
+    public Member login(MemberDTO memberDTO);
 
     public Optional<Member> findMemberByUsername(String username);
+    public Optional<Member> findMemberByPassword(String password);
 
-    public Member login(String username, String password);
 }

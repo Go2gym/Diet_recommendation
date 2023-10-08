@@ -30,18 +30,35 @@ public class MemberServiceImpl implements MemberService{
         return true;
     }
     
-    
+    @Override
+    public Member login(MemberDTO memberDTO) {
+        Optional<Member> findMember = findMemberByUsername(memberDTO.getUsername());
+
+        //찾은 username이 없으면 null 반환
+        if(findMember.isEmpty()) {
+            return null;
+        }
+
+        Member member = findMember.get();
+
+        //찾은 member의 비밀번호와 입력받은 비밀번호가 다르면 null반환
+        if(!member.getPassword().equals(memberDTO.getPassword())) {
+            return null;
+        }
+
+        return member;
+    }
 
     @Override
     public Optional<Member> findMemberByUsername(String username) {
+        return memberRepository.findMemberByUsername(username);
+    }
 
-        return memberRepository.findByUsername(username);
+    @Override
+    public Optional<Member> findMemberByPassword(String password) {
+        return memberRepository.findMemberByPassword(password);
     }
 
     
-    @Override
-    public Member login(String username, String password) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'login'");
-    }
+    
 }

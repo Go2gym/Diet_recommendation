@@ -7,5 +7,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.hwan.diet_recommendation.entity.Member;
 
 public interface MemberRepository extends JpaRepository<Member, Long> {
-    Optional<Member> findByUsername(String username);
+    Optional<Member> findMemberByUsername(String username);
+    Optional<Member> findMemberByPassword(String password);
 }
+
+

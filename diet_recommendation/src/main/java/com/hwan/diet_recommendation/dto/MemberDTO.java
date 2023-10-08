@@ -21,6 +21,13 @@ public class MemberDTO {
         this.password = password;
     }
 
+    //회원가입
+    public MemberDTO(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
+
+    //로그인
     public Member toEntity(MemberDTO memberDTO) {
         Member member = Member.builder()
                             .username(username)
