@@ -2,18 +2,19 @@ package com.hwan.diet_recommendation.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
 
 @Controller
 public class HomeController { //기본 홈 화면
-    @GetMapping("")
+    @GetMapping("/")
     public String home(@SessionAttribute(name = "username", required = false) String username) {
         if(username != null) {
             return "/member/memberHome";
         }
         
-        return "home";
+        return "/home";
     }
 
     @GetMapping("login")
