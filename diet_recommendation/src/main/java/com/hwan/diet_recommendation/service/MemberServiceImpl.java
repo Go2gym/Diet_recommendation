@@ -58,7 +58,4 @@ public class MemberServiceImpl implements MemberService{
     public Optional<Member> findMemberByPassword(String password) {
         return memberRepository.findMemberByPassword(password);
     }
-
-    
-    
 }

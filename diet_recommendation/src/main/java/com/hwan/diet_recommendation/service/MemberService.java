@@ -11,5 +11,4 @@ public interface MemberService {
 
     public Optional<Member> findMemberByUsername(String username);
     public Optional<Member> findMemberByPassword(String password);
-
 }

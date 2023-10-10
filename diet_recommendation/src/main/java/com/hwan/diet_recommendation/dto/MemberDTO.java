@@ -2,6 +2,8 @@ package com.hwan.diet_recommendation.dto;
 
 import com.hwan.diet_recommendation.entity.Member;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -11,8 +13,14 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class MemberDTO {
+    
+    @NotBlank(message = "이름은 필수 기재사항입니다.")
     private String name;
+    
+    @NotBlank(message = "별명은 필수 기재사항입니다.")
     private String username;
+
+    @NotBlank(message = "비밀번호는 필수 기재사항입니다.")
     private String password;
 
     public MemberDTO(String name, String username, String password) {

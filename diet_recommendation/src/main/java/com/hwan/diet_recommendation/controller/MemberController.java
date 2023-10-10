@@ -1,8 +1,13 @@
 package com.hwan.diet_recommendation.controller;
 
+import java.util.Optional;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.hwan.diet_recommendation.dto.MemberDTO;
 import com.hwan.diet_recommendation.entity.Member;
@@ -10,7 +15,6 @@ import com.hwan.diet_recommendation.service.MemberServiceImpl;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
-import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 
 @Controller
@@ -35,6 +39,7 @@ public class MemberController {
         
         //세션에 username넣어줌
         session.setAttribute("username", member.getUsername());
+        session.setAttribute("name", member.getName());
         session.setMaxInactiveInterval(1800);
         return "/member/memberHome";
     }
@@ -49,6 +54,19 @@ public class MemberController {
             return "/member/register";
         }
     }
+
+    @ResponseBody
+    @RequestMapping("/checkUsername.do")
+    public String usernameDuplicateCheck(@RequestParam("username") String username) {
+        String result="N";
+
+        Optional<Member> DuplicateMember = memberServiceImpl.findMemberByUsername(username);
+
+        if(DuplicateMember.isEmpty()) return "Y";
+
+        return result;
+    }
+
 
     @PostMapping("/signout")
     public String sighOut(HttpSession session) {

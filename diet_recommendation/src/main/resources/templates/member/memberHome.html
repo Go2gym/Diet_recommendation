@@ -9,10 +9,11 @@
 
 <body>
     <div>
-        <p th:text="${session.username}"></p>
-        <form action="/signout" method="post" style="text-align:right">
-            <input type="submit" value="로그아웃">
-        </form>
+        <p th:text="${session.name}" style="text-align: justify;">
+            <form action="/signout" method="post" style="text-align:right">
+                <input type="submit" value="로그아웃">
+            </form>
+        </p>
     </div>
     <div>
     </div>
