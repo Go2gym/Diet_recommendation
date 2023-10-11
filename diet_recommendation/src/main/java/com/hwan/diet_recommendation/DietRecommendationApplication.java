@@ -9,5 +9,4 @@ public class DietRecommendationApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(DietRecommendationApplication.class, args);
 	}
-
 }

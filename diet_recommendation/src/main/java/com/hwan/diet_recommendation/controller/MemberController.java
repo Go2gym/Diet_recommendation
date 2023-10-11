@@ -57,10 +57,22 @@ public class MemberController {
 
     @ResponseBody
     @RequestMapping("/checkUsername.do")
-    public String usernameDuplicateCheck(@RequestParam("username") String username) {
-        String result="N";
+    public String usernameDuplicateCheck(@RequestParam(value="username", required=false) String username) {
+        String result = "N";
 
         Optional<Member> DuplicateMember = memberServiceImpl.findMemberByUsername(username);
+
+        if(DuplicateMember.isEmpty()) return "Y";
+
+        return result;
+    }
+
+    @ResponseBody
+    @RequestMapping("/checkNickname.do")
+    public String nickanmeDuplicateCheck(@RequestParam(value="nickname", required=false) String nickname) {
+        String result = "N";
+
+        Optional<Member> DuplicateMember = memberServiceImpl.findMemberByNickname(nickname);
 
         if(DuplicateMember.isEmpty()) return "Y";
 

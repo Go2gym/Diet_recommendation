@@ -9,6 +9,7 @@ import com.hwan.diet_recommendation.entity.Member;
 public interface MemberRepository extends JpaRepository<Member, Long> {
     Optional<Member> findMemberByUsername(String username);
     Optional<Member> findMemberByPassword(String password);
+    Optional<Member> findMemberByNickname(String nickname);
 }
 
 

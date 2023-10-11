@@ -11,7 +11,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@NoArgsConstructor @AllArgsConstructor
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 public class Member {
     
@@ -28,10 +29,14 @@ public class Member {
     @Column(name="name", nullable = false)
     private String name;
 
+    @Column(name="nickname", nullable = false)
+    private String nickname;
+
     @Builder
-    public Member(String username, String name, String password) {
-        this.username = username;
+    public Member(String name, String nickname, String username, String password) {
         this.name = name;
+        this.username = username;
         this.password = password;
+        this.nickname = nickname;
     }
 }

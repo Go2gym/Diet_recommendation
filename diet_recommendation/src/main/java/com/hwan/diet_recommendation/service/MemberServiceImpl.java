@@ -25,7 +25,6 @@ public class MemberServiceImpl implements MemberService{
         if (findMemberByUsername(member.getUsername()).isPresent()) {
             return false;
         }
-
         memberRepository.save(member);
         return true;
     }
@@ -57,5 +56,9 @@ public class MemberServiceImpl implements MemberService{
     @Override
     public Optional<Member> findMemberByPassword(String password) {
         return memberRepository.findMemberByPassword(password);
+    }
+
+    public Optional<Member> findMemberByNickname(String nickname) {
+        return memberRepository.findMemberByNickname(nickname);
     }
 }

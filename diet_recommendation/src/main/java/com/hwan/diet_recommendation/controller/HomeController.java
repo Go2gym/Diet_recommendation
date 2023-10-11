@@ -25,4 +25,14 @@ public class HomeController { //기본 홈 화면
     public String getResiter() {
         return "/member/register";
     }
+
+    @GetMapping("/dietRecommendation") 
+    public String getDietRecommendation() {
+        return "d";
+    }
+
+    @GetMapping("/freeboard")
+    public String getFreeboard() {
+        return "d";
+    }
 }

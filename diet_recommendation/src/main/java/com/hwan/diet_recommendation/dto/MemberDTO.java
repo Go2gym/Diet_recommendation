@@ -23,8 +23,12 @@ public class MemberDTO {
     @NotBlank(message = "비밀번호는 필수 기재사항입니다.")
     private String password;
 
-    public MemberDTO(String name, String username, String password) {
+    @NotBlank(message = "별명은 필수 기재사항입니다.")
+    private String nickname;
+
+    public MemberDTO(String name, String nickname, String username, String password) {
         this.name = name;
+        this.nickname = nickname;
         this.username = username;
         this.password = password;
     }
@@ -38,9 +42,10 @@ public class MemberDTO {
     //로그인
     public Member toEntity(MemberDTO memberDTO) {
         Member member = Member.builder()
-                            .username(username)
-                            .password(password)
-                            .name(name)
+                            .name(memberDTO.getName())
+                            .username(memberDTO.getUsername())
+                            .password(memberDTO.getPassword())
+                            .nickname(memberDTO.getNickname())
                             .build();
         
         return member;

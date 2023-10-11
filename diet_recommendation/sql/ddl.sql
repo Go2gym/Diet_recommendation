@@ -3,5 +3,6 @@ create table member (
     username varchar(50) not null,
     password varchar(50) not null,
     name varchar(50) not null,
+    nickname varchar(50) not null,
     primary key (userid)
 );
